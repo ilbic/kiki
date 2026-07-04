@@ -5,18 +5,16 @@ from position import Position
 def parse_fen():
     print("provide FEN string: ")
     # example fen:
-   
+    p = Position()
     fen = input()
     fields = fen.split()
     board, side, castling, en_passant, halfmove, fullmove = fields
 
-    parse_piece_placement(board)
+    parse_piece_placement(board, p) 
+    return p
+   
 
-    return board, side, castling, en_passant, halfmove, fullmove
-
-    
-
-def parse_piece_placement(board):
+def parse_piece_placement(board, p):
 
     # FEN goes file by file. Numbers mean skip a file for the amount 
     # specified. so 3p2 on a file means, skip three, then there's a pawn,
@@ -34,31 +32,31 @@ def parse_piece_placement(board):
      #8/8/8/3p4/8/8/8/8 w KQkq - 0 1
     ranks = board.split("/")
     
-    
     # count backwards because that's how chess works, apparently 
     rank_number = 9
-    
     
     # recall for square -> co-ordinate mapping; rank = index / 8 & file = index modulo 8
     # for co-ordinate -> square mapping;  square = (rank - 1) * 8 + (file - 1)
     # this is a bit of a fork in the road -  either a1 = 0 or a8 = 0. 
     # I've chosen to go with a1 = 0, as it looks to be what other engines use
-    # and it's also how i'd count a chessboard if prompted, anyway.  
+    # and it's also how i'd count a chessboard if prompted on any given day, anyway.  
     
     for rank in ranks:
         file_number = 1
         rank_number -= 1
-        for char in rank:   
-              
+        for char in rank:      
             if char.isalpha():
-                index = ((rank_number - 1)*8)+(file_number-1)
-                print(index)
+                square_number = ((rank_number - 1)*8)+(file_number-1)
+                p.place_piece_on_square(square_number, char)
                 file_number += 1
+               
             
             elif char.isdigit():
-                index = ((rank_number - 1)*8)+(file_number-1)
-                print(index)
-                empty_squares = int(char)  
+                square_number= ((rank_number - 1)*8)+(file_number-1)
+                empty_squares = int(char)
+                p.place_piece_on_square(square_number, char) 
                 file_number += empty_squares
+                
+            
                 
 parse_fen()
