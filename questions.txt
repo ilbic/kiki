@@ -63,40 +63,22 @@ I assume someone has built a library for this. But ChatGPT recommended building 
 
 Can I recreate the starting position without hardcoding every square?
 Can I verify my representation is correct by printing it?
-
-
-Stage 3 — Navigation
-
 Given "e4", how do I find that square?
 Given an index, how do I know its file and rank?
 How do I know whether a square is occupied?
 How do I ask what piece is on a square?
-Stage 4 — Movement
-
 If a rook stood on d4, where could it theoretically move?
 What about a bishop?
 What about a knight?
 What directions exist on my board?
-
-Notice none of these mention "check".
-
-Stage 5 — State Changes
 How do I move a piece?
 How do I undo a move?
 Can I copy a position?
 How do I know if two positions are identical?
-Stage 6 — Rules
-
-Only now.
-
 Which pseudo-legal moves are actually legal?
 Is my king in check?
 Can I castle?
 Can I capture en passant?
-Stage 7 — Intelligence
-
-Only after the engine can play legal chess.
-
 How do I score a position?
 How do I choose between two moves?
 How do I look ahead?
