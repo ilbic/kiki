@@ -12,10 +12,13 @@ def main ():
 def parse_fen(fen):
     fields = fen.split()
     board, side, castling, en_passant, halfmove, fullmove = fields
-    # example fen:
     p = Position()
     parse_piece_placement(board, p) 
-    return p 
+    p.capture_active_colour(side)
+    p.capture_castling_rights(castling)
+    p.capture_en_passant_info(en_passant)
+    p.capture_halfmove_clock_value(halfmove)
+    p.capture_fullmove_clock_value(fullmove)
 
 def parse_piece_placement(board, p):
 
@@ -31,7 +34,7 @@ def parse_piece_placement(board, p):
     
     # i'll go slow from letter, to rank + file, to square number, to bitboard. 
 
-     # rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+    # rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
      #8/8/8/3p4/8/8/8/8 w KQkq - 0 1
     ranks = board.split("/")
     
@@ -51,8 +54,7 @@ def parse_piece_placement(board, p):
             if char.isalpha():
                 square_number = ((rank_number - 1)*8)+(file_number-1)
                 p.place_piece_on_square(square_number, char)
-                file_number += 1
-               
+                file_number += 1   
             
             elif char.isdigit():
                 square_number= ((rank_number - 1)*8)+(file_number-1)

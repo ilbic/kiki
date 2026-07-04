@@ -59,3 +59,18 @@ class Position:
                 self.white_queens |= 1 << square_number
             case "P":
                 self.white_pawns |= 1 << square_number
+                
+    def capture_active_colour(self, side):
+        self.active_colour = side
+        
+    def capture_castling_rights(self, castling):
+        self.castling_rights = castling
+        
+    def capture_en_passant_info(self, en_passant):
+        self.en_passant = en_passant
+        
+    def capture_halfmove_clock_value(self, halfmove_clock):
+        self.halfmove_clock = halfmove_clock
+        
+    def capture_fullmove_clock_value(self, fullmove):
+        self.fullmove_number = fullmove
