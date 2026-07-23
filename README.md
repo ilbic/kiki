@@ -1,16 +1,16 @@
 ## BUILDING
 
-Position - ongoing
+Position - ongoing 🟠
 
-Move Generator function - ongoing
-    - Attack tables, king + knight
+Move Generator function - ongoing 🟠
+    - Attack tables, king + knight 
 
-Evaluation function
+Evaluation function 🔴
 
-Search function
+Search function 🔴
 
-Renderer
+Renderer 🔴
 
-GUI - probs browser based?
+GUI - probs browser based? 🔴
 
 FEN converter - ✅
