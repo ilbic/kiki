@@ -38,5 +38,5 @@ def generate_moves(position):
         
      
     def generate_knight_moves():
-        # building the knight attack table is best. saves on CPU time which is a minor efficiency but they accumulate quickly!
+        # precomputing the knight attack table and then doing an on demand lookup is best. saves on CPU time which is a minor efficiency but they accumulate quickly!
         print(nothing)
